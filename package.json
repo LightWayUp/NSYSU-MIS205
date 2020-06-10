@@ -1,0 +1,41 @@
+{
+  "name": "nsysu-mis205",
+  "version": "0.0.1",
+  "description": "Homework of Database Management course of NSYSU",
+  "keywords": [
+    "JavaScript",
+    "js"
+  ],
+  "homepage": "https://github.com/LightWayUp/NSYSU-MIS205#readme",
+  "bugs": {
+    "url": "https://github.com/LightWayUp/NSYSU-MIS205/issues"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "LightWayUp",
+    "url": "https://github.com/LightWayUp"
+  },
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LightWayUp/NSYSU-MIS205.git"
+  },
+  "scripts": {
+    "start": "node --experimental-modules --throw-deprecation index.js",
+    "test": "echo \"No test to run\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "stoppable": "^1.1.0",
+    "sqlite3": "github:mapbox/node-sqlite3#c196b05",
+    "sqlite": "^4.0.9",
+    "jsonwebtoken": "^8.5.1",
+    "node-forge": "^0.9.1",
+    "uuid": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "private": true
+}
