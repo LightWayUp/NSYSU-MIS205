@@ -16,11 +16,12 @@ const ServerEvents = Server.Events;
 const ExitCodes = Constants.ExitCodes;
 const Binaries = Constants.Binaries;
 
+const binariesDirectoryPath = path.join(Binaries.DIRECTORY_PATH, ".");
 const binaryPaths = new Map(Array.from(new Map()
     .set("privateKey", Binaries.PRIVATE_KEY)
     .set("publicKey", Binaries.PUBLIC_KEY)
     .set("certificate", Binaries.CERTIFICATE))
-    .map(pair => [pair[0], path.join(Binaries.DIRECTORY_PATH, pair[1])]));
+    .map(pair => [pair[0], path.join(binariesDirectoryPath, pair[1])]));
 const certAndKeyPairs = {};
 let shouldGenerate = false;
 
@@ -36,6 +37,7 @@ binaryPaths.forEach((binaryPath, propertyKey) => {
 if (shouldGenerate) {
     console.log(`New certificate chain and keys will be created for starting server with TLS/SSL protocol support, and for use with JSON Web Token.`);
     try {
+        fs.mkdirSync(binariesDirectoryPath, { recursive: true });
         const generated = CryptoUtilities.generateCertAndKeyPairSync(credentials.CERTIFICATE_ATTRIBUTES);
         binaryPaths.forEach((binaryPath, propertyKey) => fs.writeFileSync(binaryPath, generated[propertyKey]));
         Object.assign(certAndKeyPairs, generated);
